@@ -4,6 +4,9 @@
       become: yes
       become_method: sudo
       tasks:
+      - name: "Remove dir"
+        shell: rm -rf /root/nginx
+
       - name: "Remove containers"
         shell: docker rm -f rapadura-nginx
       
