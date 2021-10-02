@@ -22,3 +22,6 @@
             - "80:80"
           volumes:
             - /root/nginx/nginx-conf/nginx.conf:/etc/nginx/nginx.conf
+          networks:
+            - name: app
+          network_mode: bridge
