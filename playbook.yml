@@ -7,7 +7,7 @@
       - name: "Launch database container"
         docker:
           name: rapadura-php
-          rapadura-php: php:7.4.24-apache-buster
+          image: php:7.4.24-apache-buster
           ports:: 
             - "81:80"
           devices:
