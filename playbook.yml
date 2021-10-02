@@ -16,7 +16,7 @@
       - name: "Launch nginx container"
         docker_container:
           name: rapadura-nginx
-          image: ginx:1.17.10
+          image: nginx:1.17.10
           restart: yes
           ports:
             - "80:80"
