@@ -8,7 +8,7 @@
         docker_container:
           name: rapadura-php
           image: php:7.4.24-apache-buster
-          exposed_ports:
+          ports:
             - "81:80"
           volumes:
             - ./www:/var/www/html
