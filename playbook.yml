@@ -4,9 +4,6 @@
       become: yes
       become_method: sudo
       tasks:
-      - name: Create networks
-        shell: docker network create -d bridge app
-
       - name: "Remove dir"
         shell: rm -rf /root/nginx
 
