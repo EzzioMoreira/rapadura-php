@@ -4,14 +4,15 @@
       become: yes
       become_method: sudo
       tasks:
-      - name: "Launch database container"
-        docker:
+      - name: "Launch php container"
+        docker_container:
           name: rapadura-php
           image: php:7.4.24-apache-buster
+          state: started
           ports:: 
             - "81:80"
-          devices:
-            - "./www:/var/www/html:rwm"
+          volumes:
+            - ./www:/var/www/html
           env:
             TZ=America/Fortaleza
           restart: always
