@@ -20,5 +20,5 @@
       - name: Git checkout
         ansible.builtin.git:
           repo: https://github.com/EzzioMoreira/web-rapadura.git
-          dest: /root/php/www
+          dest: /root/php/
           version: rapadura-php
