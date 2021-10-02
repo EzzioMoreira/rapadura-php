@@ -14,5 +14,5 @@
             - /root/php/www:/var/www/html
       - name: Copy index.php
         copy:
-          src: .www/*
+          src: ./www/*
           dest: /root/php/www
