@@ -11,4 +11,4 @@
           ports:
             - "81:80"
           volumes:
-            - ./www:/var/www/html
+            - /root/php/www:/var/www/html
