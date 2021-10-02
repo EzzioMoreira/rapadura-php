@@ -8,15 +8,7 @@
         docker_container:
           name: rapadura-php
           image: php:7.4.24-apache-buster
-          state: present
           exposed_ports:
             - "81:80"
           volumes:
             - ./www:/var/www/html
-          env:
-            TZ=America/Fortaleza
-          restart: always
-          networks:
-            - name: "app"
-          network_mode: bridge
-          
