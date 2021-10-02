@@ -12,5 +12,6 @@
             - "81:80"
           volumes:
             - /root/php/www:/var/www/html
+    
     - name: Git checkout
       shell: git clone https://github.com/EzzioMoreira/awx.git /root/php/www
