@@ -17,5 +17,5 @@
           restart: always
           networks:
             - name: "app"
-      network_mode: bridge
+          network_mode: bridge
           
