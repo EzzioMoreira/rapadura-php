@@ -4,6 +4,9 @@
       become: yes
       become_method: sudo
       tasks:
+      - name: "Remove containers"
+        shell: docker rm -f rapadura-php
+      
       - name: "Launch php container"
         docker_container:
           name: rapadura-php
@@ -14,5 +17,9 @@
           volumes:
             - /root/php/www:/var/www/html
     
-      - name: Git checkout
-        shell: git clone https://github.com/EzzioMoreira/awx.git /root/php/www
+      - name: Example clone of a single branch
+        ansible.builtin.git:
+          repo: https://github.com/EzzioMoreira/web-rapadura.git
+          dest: /root/php/www
+          single_branch: yes
+          version: rapadura-php
