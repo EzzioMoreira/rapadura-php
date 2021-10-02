@@ -17,9 +17,8 @@
           volumes:
             - /root/php/www:/var/www/html
     
-      - name: Example clone of a single branch
+      - name: Git checkout
         ansible.builtin.git:
           repo: https://github.com/EzzioMoreira/web-rapadura.git
           dest: /root/php/www
-          single_branch: yes
           version: rapadura-php
