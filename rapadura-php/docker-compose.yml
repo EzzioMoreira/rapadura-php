@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  php:
+    image: php:7.4.24-apache-buster
+    ports:
+      - "81:80"
+    container_name: rapadura-php
+    volumes:
+      - ./www:/var/www/html
+    environment:
+      - TZ=America/Fortaleza
+      - VIRTUAL_HOST=php.rapadura.local
+    restart: always
+    logging: 
+      driver: "json-file"
+      options: 
+        max-size: "5m"
+        max-file: "2"
+    networks:
+      - app
+networks: 
+  app:
+    driver: bridge
