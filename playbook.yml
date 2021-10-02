@@ -1,21 +1,21 @@
 ---
-    - name: Running container PHP
+    - name: Install Docker
       hosts: 'all'
       become: yes
       become_method: sudo
       tasks:
-      - name: "Launch database container"
-        docker:
-          name: rapadura-php
-          rapadura-php: php:7.4.24-apache-buster
-          ports:: 
-            - "81:80"
-          devices:
-            - "./www:/var/www/html:rwm"
-          env:
-            TZ=America/Fortaleza
-          restart: always
-          networks:
-            - name: "app"
-      network_mode: bridge
-          
+      - name: Instalando o Docker
+        shell: curl -fsSL https://get.docker.com | bash -
+      
+      - name: Install packages Ubuntu
+        apt:
+          name: "{{ packages }}"
+        vars:
+          packages:
+          - git
+          - python3-pip
+
+      - name: Install packages pip
+        pip:
+          name:
+            - docker-compose
