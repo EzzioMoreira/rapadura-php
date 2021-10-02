@@ -8,10 +8,11 @@
         docker_container:
           name: rapadura-php
           image: php:7.4.24-apache-buster
+          restart: always
           ports:
             - "81:80"
           volumes:
             - /root/php/www:/var/www/html
     
-    - name: Git checkout
-      shell: git clone https://github.com/EzzioMoreira/awx.git /root/php/www
+      - name: Git checkout
+        shell: git clone https://github.com/EzzioMoreira/awx.git /root/php/www
