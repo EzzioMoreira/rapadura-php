@@ -22,3 +22,5 @@
             - "81:80"
           volumes:
             - /root/php/www:/var/www/html
+          networks:
+            - name: app
