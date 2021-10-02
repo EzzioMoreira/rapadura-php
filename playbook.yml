@@ -7,6 +7,12 @@
       - name: "Remove containers"
         shell: docker rm -f rapadura-php
       
+      - name: Git checkout
+        ansible.builtin.git:
+          repo: https://github.com/EzzioMoreira/web-rapadura.git
+          dest: /root/php/
+          version: rapadura-php
+          
       - name: "Launch php container"
         docker_container:
           name: rapadura-php
@@ -16,9 +22,3 @@
             - "81:80"
           volumes:
             - /root/php/www:/var/www/html
-    
-      - name: Git checkout
-        ansible.builtin.git:
-          repo: https://github.com/EzzioMoreira/web-rapadura.git
-          dest: /root/php/
-          version: rapadura-php
