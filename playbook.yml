@@ -9,7 +9,7 @@
           name: rapadura-php
           image: php:7.4.24-apache-buster
           state: started
-          ports:: 
+          exposed_ports:
             - "81:80"
           volumes:
             - ./www:/var/www/html
