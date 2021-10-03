@@ -1,0 +1,29 @@
+---
+    - name: Running container apache
+      hosts: 'all'
+      become: yes
+      become_method: sudo
+      tasks:
+      - name: "Remove dir"
+        shell: rm -rf /root/apache
+
+      - name: "Remove containers"
+        shell: docker rm -f rapadura-apache
+      
+      - name: Git checkout
+        ansible.builtin.git:
+          repo: https://github.com/EzzioMoreira/web-rapadura.git
+          dest: /root/apache/
+          version: rapadura-apache
+          
+      - name: "Launch apache container"
+        docker_container:
+          name: rapadura-apache
+          image: httpd:2.4
+          restart: yes
+          ports:
+            - "824:80"
+          volumes:
+            - /root/apache/www:/usr/local/apache2/htdocs
+          networks:
+            - name: app
