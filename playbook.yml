@@ -24,9 +24,9 @@
           ports:
             - "83:80"
           env:
-            WORDPRESS_DB_HOST: 3306
-            WORDPRESS_DB_USER: databaseteste
-            WORDPRESS_DB_PASSWORD: metal.corp123
-            WORDPRESS_DB_NAME: wordpress
+            WORDPRESS_DB_HOST: "3306"
+            WORDPRESS_DB_USER: "databaseteste"
+            WORDPRESS_DB_PASSWORD: "metal.corp123"
+            WORDPRESS_DB_NAME: "wordpress"
           networks:
             - name: app
