@@ -1,0 +1,29 @@
+---
+    - name: Running container home
+      hosts: 'all'
+      become: yes
+      become_method: sudo
+      tasks:
+      - name: "Remove dir"
+        shell: rm -rf /root/home
+
+      - name: "Remove containers"
+        shell: docker rm -f rapadura-home
+      
+      - name: Git checkout
+        ansible.builtin.git:
+          repo: https://github.com/EzzioMoreira/web-rapadura.git
+          dest: /root/home/
+          version: rapadura-home
+          
+      - name: "Launch home container"
+        docker_container:
+          name: rapadura-home
+          image: httpd:2.4
+          restart: yes
+          ports:
+            - "84:80"
+          volumes:
+            - /root/home/www:/usr/local/apache2/htdocs
+          networks:
+            - name: app
