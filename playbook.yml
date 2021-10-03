@@ -22,7 +22,7 @@
           image: httpd:2.4
           restart: yes
           ports:
-            - "824:80"
+            - "82:80"
           volumes:
             - /root/apache/www:/usr/local/apache2/htdocs
           networks:
