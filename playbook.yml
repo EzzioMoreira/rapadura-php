@@ -1,5 +1,5 @@
 ---
-    - name: Running container PHP
+    - name: Running container nginx
       hosts: 'all'
       become: yes
       become_method: sudo
