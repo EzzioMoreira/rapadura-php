@@ -1,0 +1,32 @@
+---
+    - name: Running container wordpress
+      hosts: 'all'
+      become: yes
+      become_method: sudo
+      tasks:
+      - name: "Remove dir"
+        shell: rm -rf /root/wordpress
+
+      - name: "Remove containers"
+        shell: docker rm -f rapadura-wordpress
+      
+      - name: Git checkout
+        ansible.builtin.git:
+          repo: https://github.com/EzzioMoreira/web-rapadura.git
+          dest: /root/wordpress/
+          version: rapadura-wordpress
+          
+      - name: "Launch wordpress container"
+        docker_container:
+          name: rapadura-wordpress
+          image: wordpress:latest
+          restart: yes
+          ports:
+            - "83:80"
+          env:
+            WORDPRESS_DB_HOST: 3306
+            WORDPRESS_DB_USER: databaseteste
+            WORDPRESS_DB_PASSWORD: metal.corp123
+            WORDPRESS_DB_NAME: wordpress
+          networks:
+            - name: app
