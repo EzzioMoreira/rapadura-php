@@ -10,7 +10,7 @@
       - name: "Remove containers"
         shell: docker rm -f rapadura-nginx
       
-      - name: Git checkout
+      - name: "Git checkout"
         ansible.builtin.git:
           repo: https://github.com/EzzioMoreira/web-rapadura.git
           dest: /root/nginx/
