@@ -5,7 +5,7 @@
       become_method: sudo
       tasks:
       - name: "Remove dir"
-        shell: rm -rf /root/nginx
+        shell: rm -rf /home/ubuntu/nginx
 
       - name: "Remove containers"
         shell: docker rm -f rapadura-nginx
@@ -13,7 +13,7 @@
       - name: "Git checkout"
         ansible.builtin.git:
           repo: https://github.com/EzzioMoreira/web-rapadura.git
-          dest: /root/nginx/
+          dest: /home/ubuntu/nginx/
           version: rapadura-nginx
           
       - name: "Launch nginx container"
@@ -24,6 +24,6 @@
           ports:
             - "80:80"
           volumes:
-            - /root/nginx/nginx-conf/nginx.conf:/etc/nginx/nginx.conf
+            - /home/ubuntu/nginx/nginx-conf/nginx.conf:/etc/nginx/nginx.conf
           networks:
             - name: app
