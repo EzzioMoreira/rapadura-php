@@ -6,17 +6,19 @@ services:
       - 83:80
     container_name: rapadura-wordpress
     restart: always
-    volumes:
-    - /home/ubuntu/home/www:/var/www/html
     environment:
-      - TZ=America/Fortaleza
-    logging: 
+      WORDPRESS_DB_HOST: database-rapadura.cakojermwtlb.us-west-1.rds.amazonaws.com
+      WORDPRESS_DB_USER: databaseteste
+      WORDPRESS_DB_PASSWORD: metal.corp123
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_TABLE_PREFIX: wp_
+    logging:
       driver: "json-file"
-      options: 
+      options:
         max-size: "5m"
         max-file: "2"
     networks:
       - app
-networks: 
+networks:
   app:
     driver: bridge
