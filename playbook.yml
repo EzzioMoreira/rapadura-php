@@ -5,7 +5,7 @@
       become_method: sudo
       tasks:
       - name: "Remove dir"
-        shell: rm -rf /root/wordpress
+        shell: rm -rf /home/ubuntu/wordpress
 
       - name: "Remove containers"
         shell: docker rm -f rapadura-wordpress
@@ -13,22 +13,9 @@
       - name: Git checkout
         ansible.builtin.git:
           repo: https://github.com/EzzioMoreira/web-rapadura.git
-          dest: /root/wordpress/
+          dest: /home/ubuntu/wordpress/
           version: rapadura-wordpress
           
-      - name: "Launch wordpress container"
-        docker_container:
-          name: rapadura-wordpress
-          image: wordpress:latest
-          restart: yes
-          ports:
-            - "83:80"
-          env:
-            WORDPRESS_DB_HOST: "database-rapadura.cakojermwtlb.us-west-1.rds.amazonaws.com"
-            WORDPRESS_DB_USER: "databaseteste"
-            WORDPRESS_DB_PASSWORD: "metal.corp123"
-            WORDPRESS_DB_NAME: "wordpress"
-            WORDPRESS_TABLE_PREFIX: "wp_"
-          networks:
-            - name: app
+      - name: "Run container"
+        shell: docker-compose -f /home/ubuntu/wordpress/docker-compose.yml up -d
           
