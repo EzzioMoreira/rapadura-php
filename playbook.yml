@@ -13,7 +13,7 @@
       - name: "Git checkout"
         ansible.builtin.git:
           repo: https://github.com/EzzioMoreira/web-rapadura.git
-          dest: /home/ubuntu/nginx
+          dest: /home/ubuntu/nginx/
           version: rapadura-nginx
           
       - name: "Run container"
