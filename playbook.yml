@@ -5,7 +5,7 @@
       become_method: sudo
       tasks:
       - name: "Remove dir"
-        shell: rm -rf /root/apache
+        shell: rm -rf /home/ubuntu/apache/
 
       - name: "Remove containers"
         shell: docker rm -f rapadura-apache
@@ -18,15 +18,3 @@
       
       - name: "Run container"
         shell: docker-compose -f /home/ubuntu/apache/docker-compose.yml up -d
-        
-#      - name: "Launch apache container"
-#        docker_container:
-#          name: rapadura-apache
-#          image: httpd:2.4
-#          restart: yes
-#          ports:
-#            - "82:80"
-#          volumes:
-#            - /root/apache/www:/usr/local/apache2/htdocs
-#          networks:
-#            - name: app
