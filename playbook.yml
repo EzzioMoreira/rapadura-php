@@ -13,17 +13,8 @@
       - name: "Git checkout"
         ansible.builtin.git:
           repo: https://github.com/EzzioMoreira/web-rapadura.git
-          dest: /home/ubuntu/nginx/
+          dest: /home/ubuntu/nginx
           version: rapadura-nginx
           
-      - name: "Launch nginx container"
-        docker_container:
-          name: rapadura-nginx
-          image: nginx:1.17.10
-          restart: yes
-          ports:
-            - "80:80"
-          volumes:
-            - /home/ubuntu/nginx/nginx-conf/nginx.conf:/etc/nginx/nginx.conf
-          networks:
-            - name: app
+      - name: "Run container"
+        shell: docker-compose -f /home/ubuntu/nginx/docker-compose.yml up -d
